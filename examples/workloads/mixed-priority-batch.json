@@ -1,0 +1,9 @@
+{
+  "arrival_distribution": "bursty and mixed",
+  "models": ["small-model", "large-model"],
+  "objectives": {"goodput": "maximize subject to objectives"},
+  "output_length_distribution": "short to long",
+  "prefix_reuse": "mixed",
+  "priorities": ["interactive", "standard", "deferred"],
+  "prompt_length_distribution": "short to long"
+}

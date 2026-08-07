@@ -1,0 +1,63 @@
+{
+  "artifacts": {
+    "estimate": {
+      "bytes_per_sequence": 201326592,
+      "bytes_per_sequence_human": "192.00 MiB",
+      "bytes_per_token": 98304,
+      "bytes_per_token_human": "96.00 KiB",
+      "kv_group_size": 4,
+      "total_bytes": 1610612736,
+      "total_human": "1.50 GiB"
+    }
+  },
+  "conclusion": "The estimate excludes block rounding, reservation slack, and transfer copies.",
+  "configuration": {
+    "attention_heads": 32,
+    "concurrent_sequences": 8,
+    "element_bytes": 2,
+    "head_dim": 128,
+    "kv_heads": 8,
+    "layers": 24,
+    "tokens_per_sequence": 2048
+  },
+  "derived_metrics": [
+    {
+      "evidence": "estimated",
+      "name": "total_kv",
+      "unit": "bytes",
+      "value": 1610612736
+    }
+  ],
+  "environment": {
+    "execution": "CPU-only formula",
+    "hardware": "not applicable"
+  },
+  "hypothesis": "KV storage grows linearly with tokens and concurrent sequences under fixed dimensions.",
+  "limitations": [
+    "It assumes dense K and V storage with the declared element size.",
+    "It does not model prefix sharing or eviction."
+  ],
+  "raw_measurements": [
+    {
+      "evidence": "estimated",
+      "name": "bytes_per_token",
+      "unit": "bytes",
+      "value": 98304
+    },
+    {
+      "evidence": "estimated",
+      "name": "bytes_per_sequence",
+      "unit": "bytes",
+      "value": 201326592
+    }
+  ],
+  "record_id": "kv-memory-estimate-v1",
+  "result_type": "estimated",
+  "schema_version": "1.0",
+  "sources": [],
+  "title": "Grouped-query KV-cache estimate for a declared synthetic configuration",
+  "workload": {
+    "concurrent_sequences": 8,
+    "tokens_per_sequence": 2048
+  }
+}

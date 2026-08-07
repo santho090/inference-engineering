@@ -1,0 +1,280 @@
+{
+  "artifacts": {
+    "event_log": [
+      {
+        "action": "admit",
+        "detail": "allocated 2 blocks",
+        "request_id": "alpha",
+        "status": "allocated",
+        "tick": 0
+      },
+      {
+        "action": "admit",
+        "detail": "allocated 2 blocks",
+        "request_id": "beta",
+        "status": "allocated",
+        "tick": 1
+      },
+      {
+        "action": "admit",
+        "detail": "allocated 2 blocks",
+        "request_id": "gamma",
+        "status": "allocated",
+        "tick": 2
+      },
+      {
+        "action": "admit",
+        "detail": "allocated 2 blocks",
+        "request_id": "delta",
+        "status": "allocated",
+        "tick": 3
+      },
+      {
+        "action": "release",
+        "detail": "released 2 blocks",
+        "request_id": "beta",
+        "status": "released",
+        "tick": 4
+      },
+      {
+        "action": "release",
+        "detail": "released 2 blocks",
+        "request_id": "delta",
+        "status": "released",
+        "tick": 5
+      },
+      {
+        "action": "admit",
+        "detail": "allocated 5 blocks",
+        "request_id": "epsilon",
+        "status": "allocated",
+        "tick": 6
+      },
+      {
+        "action": "admit",
+        "detail": "allocated 3 blocks",
+        "request_id": "zeta",
+        "status": "allocated",
+        "tick": 7
+      },
+      {
+        "action": "touch",
+        "detail": "recomputed 2 blocks",
+        "request_id": "alpha",
+        "status": "recomputed",
+        "tick": 8
+      }
+    ],
+    "final_state": {
+      "allocations": [
+        {
+          "logical_to_physical": [
+            {
+              "logical_block": 0,
+              "physical_block": 4
+            },
+            {
+              "logical_block": 1,
+              "physical_block": 5
+            }
+          ],
+          "request_id": "alpha",
+          "reserved_blocks": 2,
+          "reserved_tokens": 8,
+          "used_blocks": 1,
+          "used_tokens": 4
+        },
+        {
+          "logical_to_physical": [
+            {
+              "logical_block": 0,
+              "physical_block": 2
+            },
+            {
+              "logical_block": 1,
+              "physical_block": 3
+            },
+            {
+              "logical_block": 2,
+              "physical_block": 6
+            },
+            {
+              "logical_block": 3,
+              "physical_block": 7
+            },
+            {
+              "logical_block": 4,
+              "physical_block": 8
+            }
+          ],
+          "request_id": "epsilon",
+          "reserved_blocks": 5,
+          "reserved_tokens": 20,
+          "used_blocks": 5,
+          "used_tokens": 18
+        },
+        {
+          "logical_to_physical": [
+            {
+              "logical_block": 0,
+              "physical_block": 0
+            },
+            {
+              "logical_block": 1,
+              "physical_block": 1
+            },
+            {
+              "logical_block": 2,
+              "physical_block": 9
+            }
+          ],
+          "request_id": "zeta",
+          "reserved_blocks": 3,
+          "reserved_tokens": 12,
+          "used_blocks": 2,
+          "used_tokens": 8
+        }
+      ],
+      "evicted_blocks": 4,
+      "evicted_request_ids": [
+        "gamma"
+      ],
+      "fragmentation_blocks": 0,
+      "free_blocks": 0,
+      "largest_free_span": 0,
+      "recomputed_blocks": 2,
+      "reserved_blocks": 10,
+      "total_blocks": 10,
+      "used_blocks": 8
+    }
+  },
+  "conclusion": "The trace illustrates allocator state transitions only; it does not estimate runtime transfer, kernel, or quality costs.",
+  "configuration": {
+    "allocation_mode": "paged",
+    "auto_evict": true,
+    "block_size_tokens": 4,
+    "total_blocks": 10
+  },
+  "derived_metrics": [
+    {
+      "evidence": "simulated",
+      "name": "evicted_blocks",
+      "unit": "blocks",
+      "value": 4
+    },
+    {
+      "evidence": "simulated",
+      "name": "recomputed_blocks",
+      "unit": "blocks",
+      "value": 2
+    },
+    {
+      "evidence": "simulated",
+      "name": "fragmentation_blocks",
+      "unit": "blocks",
+      "value": 0
+    }
+  ],
+  "environment": {
+    "execution": "deterministic CPU-only block-allocation simulation",
+    "hardware": "not applicable"
+  },
+  "hypothesis": "Physical paging can admit a logical allocation when total free blocks are sufficient but no contiguous span is large enough.",
+  "limitations": [
+    "The eviction rule is least-recently-touched and not a recommendation.",
+    "All blocks have one fixed token capacity in this abstract model."
+  ],
+  "raw_measurements": [
+    {
+      "evidence": "simulated",
+      "name": "reserved_blocks",
+      "unit": "blocks",
+      "value": 10
+    },
+    {
+      "evidence": "simulated",
+      "name": "used_blocks",
+      "unit": "blocks",
+      "value": 8
+    },
+    {
+      "evidence": "simulated",
+      "name": "free_blocks",
+      "unit": "blocks",
+      "value": 0
+    }
+  ],
+  "record_id": "kv-paged-v1",
+  "result_type": "simulated",
+  "schema_version": "1.0",
+  "sources": [],
+  "title": "paged allocation on a variable-length KV trace",
+  "workload": {
+    "events": [
+      {
+        "action": "admit",
+        "request_id": "alpha",
+        "reserve_tokens": 8,
+        "tick": 0,
+        "tokens": 4
+      },
+      {
+        "action": "admit",
+        "request_id": "beta",
+        "reserve_tokens": 8,
+        "tick": 1,
+        "tokens": 8
+      },
+      {
+        "action": "admit",
+        "request_id": "gamma",
+        "reserve_tokens": 8,
+        "tick": 2,
+        "tokens": 8
+      },
+      {
+        "action": "admit",
+        "request_id": "delta",
+        "reserve_tokens": 8,
+        "tick": 3,
+        "tokens": 8
+      },
+      {
+        "action": "release",
+        "request_id": "beta",
+        "reserve_tokens": null,
+        "tick": 4,
+        "tokens": 0
+      },
+      {
+        "action": "release",
+        "request_id": "delta",
+        "reserve_tokens": null,
+        "tick": 5,
+        "tokens": 0
+      },
+      {
+        "action": "admit",
+        "request_id": "epsilon",
+        "reserve_tokens": 20,
+        "tick": 6,
+        "tokens": 18
+      },
+      {
+        "action": "admit",
+        "request_id": "zeta",
+        "reserve_tokens": 12,
+        "tick": 7,
+        "tokens": 8
+      },
+      {
+        "action": "touch",
+        "request_id": "alpha",
+        "reserve_tokens": null,
+        "tick": 8,
+        "tokens": 0
+      }
+    ],
+    "time_unit": "abstract scheduler tick"
+  }
+}

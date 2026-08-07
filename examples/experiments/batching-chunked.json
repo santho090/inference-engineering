@@ -1,0 +1,234 @@
+{
+  "artifacts": {
+    "per_request": [
+      {
+        "admitted_tick": 0,
+        "arrival_tick": 0,
+        "completion_latency_ticks": 9,
+        "completion_tick": 9,
+        "input_tokens": 8,
+        "output_tokens": 8,
+        "queue_ticks": 0,
+        "request_id": "r1",
+        "ttft_ticks": 5
+      },
+      {
+        "admitted_tick": 0,
+        "arrival_tick": 0,
+        "completion_latency_ticks": 8,
+        "completion_tick": 8,
+        "input_tokens": 12,
+        "output_tokens": 4,
+        "queue_ticks": 0,
+        "request_id": "r2",
+        "ttft_ticks": 6
+      },
+      {
+        "admitted_tick": 1,
+        "arrival_tick": 1,
+        "completion_latency_ticks": 16,
+        "completion_tick": 17,
+        "input_tokens": 4,
+        "output_tokens": 12,
+        "queue_ticks": 0,
+        "request_id": "r3",
+        "ttft_ticks": 4
+      },
+      {
+        "admitted_tick": 2,
+        "arrival_tick": 2,
+        "completion_latency_ticks": 8,
+        "completion_tick": 10,
+        "input_tokens": 16,
+        "output_tokens": 4,
+        "queue_ticks": 0,
+        "request_id": "r4",
+        "ttft_ticks": 6
+      },
+      {
+        "admitted_tick": 10,
+        "arrival_tick": 3,
+        "completion_latency_ticks": 17,
+        "completion_tick": 20,
+        "input_tokens": 6,
+        "output_tokens": 10,
+        "queue_ticks": 7,
+        "request_id": "r5",
+        "ttft_ticks": 12
+      },
+      {
+        "admitted_tick": 8,
+        "arrival_tick": 5,
+        "completion_latency_ticks": 11,
+        "completion_tick": 16,
+        "input_tokens": 10,
+        "output_tokens": 6,
+        "queue_ticks": 3,
+        "request_id": "r6",
+        "ttft_ticks": 8
+      },
+      {
+        "admitted_tick": 16,
+        "arrival_tick": 6,
+        "completion_latency_ticks": 16,
+        "completion_tick": 22,
+        "input_tokens": 3,
+        "output_tokens": 14,
+        "queue_ticks": 10,
+        "request_id": "r7",
+        "ttft_ticks": 11
+      },
+      {
+        "admitted_tick": 9,
+        "arrival_tick": 8,
+        "completion_latency_ticks": 9,
+        "completion_tick": 17,
+        "input_tokens": 14,
+        "output_tokens": 5,
+        "queue_ticks": 1,
+        "request_id": "r8",
+        "ttft_ticks": 7
+      }
+    ]
+  },
+  "conclusion": "Use this result only to compare declared scheduler rules on this trace; it is not a hardware measurement.",
+  "configuration": {
+    "batch_bonus_units": 1,
+    "capacity_units_per_tick": 4,
+    "completion_objective_ticks": 36,
+    "decode_reserve_units": 2,
+    "max_active_requests": 4,
+    "max_ticks": 10000,
+    "prefill_chunk_tokens": 4,
+    "seed": 0,
+    "static_max_wait_ticks": 2,
+    "strategy": "chunked",
+    "ttft_objective_ticks": 18
+  },
+  "derived_metrics": [
+    {
+      "evidence": "simulated",
+      "name": "p95_ttft",
+      "unit": "ticks",
+      "value": 12.0
+    },
+    {
+      "evidence": "simulated",
+      "name": "output_throughput",
+      "unit": "tokens per tick",
+      "value": 2.8636363636363638
+    },
+    {
+      "evidence": "simulated",
+      "name": "goodput",
+      "unit": "requests per tick",
+      "value": 0.36363636363636365
+    }
+  ],
+  "environment": {
+    "execution": "deterministic CPU-only discrete-event simulation",
+    "hardware": "not applicable",
+    "seed": 0
+  },
+  "hypothesis": "Scheduling policy changes the queueing and phase-interference tradeoff under the declared abstract work model.",
+  "limitations": [
+    "Work units abstract kernel, memory, and transfer behavior.",
+    "The fixed trace is synthetic and does not represent a live workload."
+  ],
+  "raw_measurements": [
+    {
+      "evidence": "simulated",
+      "name": "completed_requests",
+      "unit": "requests",
+      "value": 8
+    },
+    {
+      "evidence": "simulated",
+      "name": "completed_output_tokens",
+      "unit": "tokens",
+      "value": 63
+    }
+  ],
+  "record_id": "batching-chunked-v1",
+  "result_type": "simulated",
+  "schema_version": "1.0",
+  "sources": [],
+  "title": "chunked batching on the fixed mixed-length trace",
+  "workload": {
+    "requests": [
+      {
+        "arrival_tick": 0,
+        "input_tokens": 8,
+        "model": "example-transformer",
+        "output_tokens": 8,
+        "priority": 0,
+        "request_id": "r1",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 0,
+        "input_tokens": 12,
+        "model": "example-transformer",
+        "output_tokens": 4,
+        "priority": 0,
+        "request_id": "r2",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 1,
+        "input_tokens": 4,
+        "model": "example-transformer",
+        "output_tokens": 12,
+        "priority": 1,
+        "request_id": "r3",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 2,
+        "input_tokens": 16,
+        "model": "example-transformer",
+        "output_tokens": 4,
+        "priority": 0,
+        "request_id": "r4",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 3,
+        "input_tokens": 6,
+        "model": "example-transformer",
+        "output_tokens": 10,
+        "priority": 1,
+        "request_id": "r5",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 5,
+        "input_tokens": 10,
+        "model": "example-transformer",
+        "output_tokens": 6,
+        "priority": 0,
+        "request_id": "r6",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 6,
+        "input_tokens": 3,
+        "model": "example-transformer",
+        "output_tokens": 14,
+        "priority": 1,
+        "request_id": "r7",
+        "shared_prefix_tokens": 0
+      },
+      {
+        "arrival_tick": 8,
+        "input_tokens": 14,
+        "model": "example-transformer",
+        "output_tokens": 5,
+        "priority": 0,
+        "request_id": "r8",
+        "shared_prefix_tokens": 0
+      }
+    ],
+    "time_unit": "abstract scheduler tick"
+  }
+}

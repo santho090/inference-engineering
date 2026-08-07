@@ -1,0 +1,9 @@
+{
+  "arrival_distribution": "low rate with large requests",
+  "models": ["long-context-model"],
+  "objectives": {"completion": "bounded", "ttft": "bounded"},
+  "output_length_distribution": "medium",
+  "prefix_reuse": "low",
+  "priorities": ["standard"],
+  "prompt_length_distribution": "long"
+}

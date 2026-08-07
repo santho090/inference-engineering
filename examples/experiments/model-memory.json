@@ -1,0 +1,63 @@
+{
+  "artifacts": {
+    "estimate": {
+      "activation_bytes": 33554432,
+      "activation_human": "32.00 MiB",
+      "total_bytes": 2033554432,
+      "total_human": "1.89 GiB",
+      "weights_bytes": 2000000000,
+      "weights_human": "1.86 GiB"
+    }
+  },
+  "conclusion": "This lower-bound estimate excludes allocator, runtime, and KV-cache headroom.",
+  "configuration": {
+    "activation_bytes": 2,
+    "activation_tensors": 2,
+    "batch_size": 4,
+    "hidden_size": 4096,
+    "layers": 24,
+    "parameter_count": 1000000000,
+    "sequence_length": 512,
+    "weight_bytes": 2
+  },
+  "derived_metrics": [
+    {
+      "evidence": "estimated",
+      "name": "total_residency",
+      "unit": "bytes",
+      "value": 2033554432
+    }
+  ],
+  "environment": {
+    "execution": "CPU-only formula",
+    "hardware": "not applicable"
+  },
+  "hypothesis": "The declared weights and one activation working set fit within the stated estimate.",
+  "limitations": [
+    "It does not model runtime workspaces or graph capture memory.",
+    "It represents one activation working set, not a peak implementation trace."
+  ],
+  "raw_measurements": [
+    {
+      "evidence": "estimated",
+      "name": "weights",
+      "unit": "bytes",
+      "value": 2000000000
+    },
+    {
+      "evidence": "estimated",
+      "name": "activation_working_set",
+      "unit": "bytes",
+      "value": 33554432
+    }
+  ],
+  "record_id": "model-memory-estimate-v1",
+  "result_type": "estimated",
+  "schema_version": "1.0",
+  "sources": [],
+  "title": "Model residency estimate for a declared synthetic configuration",
+  "workload": {
+    "concurrent_sequences": 4,
+    "sequence_length": 512
+  }
+}

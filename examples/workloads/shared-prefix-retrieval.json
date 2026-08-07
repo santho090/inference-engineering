@@ -1,0 +1,9 @@
+{
+  "arrival_distribution": "bursty",
+  "models": ["retrieval-model"],
+  "objectives": {"cost": "bounded", "ttft": "tight"},
+  "output_length_distribution": "short",
+  "prefix_reuse": "high",
+  "priorities": ["interactive"],
+  "prompt_length_distribution": "medium with repeated source prefix"
+}

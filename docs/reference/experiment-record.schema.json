@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Inference engineering experiment record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_id",
+    "title",
+    "result_type",
+    "hypothesis",
+    "workload",
+    "environment",
+    "configuration",
+    "raw_measurements",
+    "derived_metrics",
+    "conclusion",
+    "limitations",
+    "artifacts",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {"type": "string", "pattern": "\\S", "const": "1.0"},
+    "record_id": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "title": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "result_type": {
+      "type": "string",
+      "pattern": "\\S",
+      "enum": ["measured", "simulated", "estimated", "reported"]
+    },
+    "hypothesis": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "workload": {"type": "object"},
+    "environment": {"type": "object"},
+    "configuration": {"type": "object"},
+    "raw_measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/labeledValue"}
+    },
+    "derived_metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/labeledValue"}
+    },
+    "conclusion": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1, "pattern": "\\S"}
+    },
+    "artifacts": {"type": "object"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?![\\s\\S]*\\s)https?://[^/?#\\s][^\\s]*$"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"result_type": {"const": "reported"}},
+        "required": ["result_type"]
+      },
+      "then": {
+        "properties": {"sources": {"minItems": 1}}
+      }
+    },
+    {
+      "if": {
+        "properties": {"result_type": {"const": "measured"}},
+        "required": ["result_type"]
+      },
+      "then": {
+        "properties": {
+          "raw_measurements": {"items": {"$ref": "#/$defs/measuredLabeledValue"}},
+          "derived_metrics": {"items": {"$ref": "#/$defs/measuredLabeledValue"}}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"result_type": {"const": "simulated"}},
+        "required": ["result_type"]
+      },
+      "then": {
+        "properties": {
+          "raw_measurements": {"items": {"$ref": "#/$defs/simulatedLabeledValue"}},
+          "derived_metrics": {"items": {"$ref": "#/$defs/simulatedLabeledValue"}}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"result_type": {"const": "estimated"}},
+        "required": ["result_type"]
+      },
+      "then": {
+        "properties": {
+          "raw_measurements": {"items": {"$ref": "#/$defs/estimatedLabeledValue"}},
+          "derived_metrics": {"items": {"$ref": "#/$defs/estimatedLabeledValue"}}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"result_type": {"const": "reported"}},
+        "required": ["result_type"]
+      },
+      "then": {
+        "properties": {
+          "raw_measurements": {"items": {"$ref": "#/$defs/reportedLabeledValue"}},
+          "derived_metrics": {"items": {"$ref": "#/$defs/reportedLabeledValue"}}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "labeledValue": {
+      "type": "object",
+      "required": ["name", "value", "unit", "evidence"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "value": {"type": "number"},
+        "unit": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "evidence": {
+          "type": "string",
+          "pattern": "\\S",
+          "enum": ["measured", "simulated", "estimated", "reported"]
+        },
+        "note": {"type": "string"}
+      }
+    },
+    "measuredLabeledValue": {
+      "allOf": [
+        {"$ref": "#/$defs/labeledValue"},
+        {"properties": {"evidence": {"const": "measured"}}}
+      ]
+    },
+    "simulatedLabeledValue": {
+      "allOf": [
+        {"$ref": "#/$defs/labeledValue"},
+        {"properties": {"evidence": {"const": "simulated"}}}
+      ]
+    },
+    "estimatedLabeledValue": {
+      "allOf": [
+        {"$ref": "#/$defs/labeledValue"},
+        {"properties": {"evidence": {"const": "estimated"}}}
+      ]
+    },
+    "reportedLabeledValue": {
+      "allOf": [
+        {"$ref": "#/$defs/labeledValue"},
+        {"properties": {"evidence": {"const": "reported"}}}
+      ]
+    }
+  }
+}

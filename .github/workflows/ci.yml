@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e .
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/generate_fixtures.py --check
+      - run: python scripts/render_results.py --check
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e . "ruff>=0.8,<1" "mypy>=1.13,<2" "mkdocs>=1.6,<2"
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: mypy src tests scripts
+      - run: mkdocs build --strict
+      - run: python scripts/check_chapter_contract.py
+      - run: python scripts/check_source_register.py
+      - run: python scripts/check_markdown_links.py
+      - run: python scripts/prepublication_scan.py
+      - run: python scripts/check_history.py
+      - run: python scripts/check_license_manifest.py

@@ -1,0 +1,49 @@
+site_name: Inference Engineering
+site_description: A Markdown-first field guide with CPU-only inference engineering exercises.
+docs_dir: docs
+site_dir: site
+strict: true
+theme:
+  name: mkdocs
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+nav:
+  - Home: index.md
+  - "Part I: define the problem":
+      - What inference engineering controls: foundations/01-what-it-controls.md
+      - Workloads and objectives: foundations/02-workloads-and-objectives.md
+      - Request lifecycle and metrics: foundations/03-request-lifecycle.md
+      - Measurement integrity: foundations/04-measurement-integrity.md
+  - "Part II: understand the machine":
+      - Transformer inference anatomy: hardware/05-transformer-anatomy.md
+      - GPU execution and memory: hardware/06-gpu-execution.md
+      - Roofline reasoning: hardware/07-roofline.md
+      - Memory sizing: hardware/08-memory-sizing.md
+  - "Part III: optimize one engine":
+      - Level 1, kernel optimization: levels/09-kernel-optimization.md
+      - Level 2, phase scheduling: levels/10-phase-scheduling.md
+      - Level 3, cache management: levels/11-cache-management.md
+      - Quantization, speculation, and parallelism: levels/12-runtime-levers.md
+  - "Part IV: optimize the service":
+      - Level 4, model and GPU pooling: production/13-pooling-and-placement.md
+      - Level 5, cluster architecture: production/14-cluster-architecture.md
+      - Level 6, adaptive control: production/15-adaptive-control.md
+      - Observability and capacity: production/16-observability-and-capacity.md
+  - Future: future/17-where-next.md
+  - Reference:
+      - Glossary: reference/glossary.md
+      - Equations and notation: reference/equations.md
+      - Experiment records: reference/experiment-record.md
+      - Generated result tables: reference/generated-results.md
+      - Benchmark checklist: reference/benchmark-checklist.md
+      - Research map: reference/research-map.md
+      - Runtime and project map: reference/runtime-map.md
+      - Project opportunity map: reference/project-opportunity-map.md
+      - Exercises: reference/exercises.md
+      - Answer notes: reference/answer-notes.md
+      - Repository boundary: adr/0001-repository-boundary.md
+      - Specification: specification.md
+      - Program roadmap: program-roadmap.md
+      - Publication policy: publication-policy.md

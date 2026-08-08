@@ -1,14 +1,14 @@
 # Project opportunity map
 
-This map turns the research directions into a public, clean-room portfolio order. The project names below are planned labels, not existing repositories or commitments from any upstream maintainer.
+This map turns the research directions into a public, clean-room portfolio order. The three P0 repositories exist; P1 and P2 names are planned labels, not existing repositories or commitments from any upstream maintainer.
 
 ## Priority summary
 
 ### P0
 
-- inference-engineering: maintain the field guide, record format, and deterministic models as the common vocabulary.
-- inference-bottleneck-lab: the highest near-term adoption project because it can produce small, trace-defined diagnoses that map directly to public runtime seams.
-- kv-policy-lab: the strongest focused research project because KV admission, reuse, reservation, eviction, and movement create a precise policy surface with useful synthetic counterexamples.
+- [inference-engineering](https://github.com/santho090/inference-engineering): maintain the field guide, record format, and deterministic models as the common vocabulary.
+- [inference-bottleneck-lab](https://github.com/santho090/inference-bottleneck-lab): the highest near-term adoption project because it can produce small, trace-defined diagnoses that map directly to public runtime seams.
+- [kv-policy-lab](https://github.com/santho090/kv-policy-lab): the strongest focused research project because KV admission, reuse, reservation, eviction, and movement create a precise policy surface with useful synthetic counterexamples.
 
 ### P1
 
@@ -120,7 +120,7 @@ Level 1 standalone kernel work is deferred unless the learner has supported GPU 
 ## Recommended sequence
 
 1. Maintain P0 inference-engineering as the shared language and verification gate.
-2. Build P0 inference-bottleneck-lab first for near-term public adoption through small diagnostics and upstream discussions.
-3. Build P0 kv-policy-lab next for the deepest focused research work on cache-policy tradeoffs.
+2. Use P0 inference-bottleneck-lab for small, trace-defined diagnostics and upstream discussions.
+3. Use P0 kv-policy-lab for focused cache-policy counterexamples and handoff evidence.
 4. Promote only evidence-backed slices into P1 scheduler, placement, and controller labs.
 5. Leave P2 systems until a measured bottleneck proves that their additional runtime surface is justified.

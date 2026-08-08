@@ -40,4 +40,4 @@ The commands require neither a GPU nor a network connection. The [generated resu
 
 The official *Inference Engineering* guide by [Philip Kiely](https://inferenceengineering.tech/) is a navigational reference. This repository independently writes its text, diagrams, exercises, examples, and code.
 
-The planned `inference-bottleneck-lab` and `kv-policy-lab` projects are intentionally outside this repository. They remain planned until they exist. This guide supplies the shared vocabulary and record format those projects can reuse.
+The [inference-bottleneck-lab](https://github.com/santho090/inference-bottleneck-lab) and [kv-policy-lab](https://github.com/santho090/kv-policy-lab) projects are intentionally outside this repository. This guide supplies the shared vocabulary and evidence labels; the labs apply them to diagnosis and deterministic cache-policy experiments.

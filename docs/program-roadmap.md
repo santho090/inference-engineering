@@ -4,7 +4,9 @@ The repositories are ordered by dependency and evidence quality, not by how ambi
 
 ## P0: establish the learning and measurement foundation
 
-### `inference-engineering`
+The P0 repositories are public under Apache-2.0. Their exit criteria remain maintenance gates for every change, not one-time completion claims.
+
+### [inference-engineering](https://github.com/santho090/inference-engineering)
 
 An executable field guide covering the full inference stack. It provides the shared language, equations, workload models, metrics, and research map used by every later project.
 
@@ -15,7 +17,7 @@ Exit criteria:
 - Deterministic simulations demonstrate continuous batching, KV growth, and queueing effects.
 - Documentation and code pass automated validation from a clean checkout.
 
-### `inference-bottleneck-lab`
+### [inference-bottleneck-lab](https://github.com/santho090/inference-bottleneck-lab)
 
 A workload runner and offline analyzer that distinguishes queue, compute, memory bandwidth, KV capacity, transfer, and scheduler bottlenecks.
 
@@ -26,7 +28,7 @@ Exit criteria:
 - Every diagnosis links evidence to a falsifiable rule.
 - Baseline comparison reports regressions without claiming causal certainty from correlation alone.
 
-### `kv-policy-lab`
+### [kv-policy-lab](https://github.com/santho090/kv-policy-lab)
 
 A discrete-event simulator for KV admission, reservation, placement, migration, eviction, transfer, and recomputation policies.
 

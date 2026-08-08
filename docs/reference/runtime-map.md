@@ -18,4 +18,4 @@ These public projects expose different integration seams. The seams are version-
 4. Submit code with a workload definition, measurement boundaries, result labels, and failure accounting.
 5. Keep experimental policy code outside a runtime until its abstraction is accepted.
 
-The planned inference-bottleneck-lab and kv-policy-lab projects remain planned until they exist. They are intended to hold broader diagnosis and KV-policy experiments without turning this field guide into a serving system. See the [project opportunity map](project-opportunity-map.md) for dependency order and clean-room project slices.
+[Inference Bottleneck Lab](https://github.com/santho090/inference-bottleneck-lab) holds broader diagnosis work, and [KV Policy Lab](https://github.com/santho090/kv-policy-lab) holds deterministic cache-policy experiments. Both remain separate from this field guide so their software and result contracts can evolve without turning the guide into a serving system. See the [project opportunity map](project-opportunity-map.md) for dependency order and clean-room project slices.

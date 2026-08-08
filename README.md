@@ -54,7 +54,7 @@ The checked-in fixtures and rendered tables are in [examples/experiments](exampl
 
 ## Scope
 
-This repository is not a serving engine, deployment bundle, hardware benchmark suite, or configuration recommender. The planned `inference-bottleneck-lab` and `kv-policy-lab` projects are separate and remain planned until they exist.
+This repository is not a serving engine, deployment bundle, hardware benchmark suite, or configuration recommender. Executable diagnosis work lives in [inference-bottleneck-lab](https://github.com/santho090/inference-bottleneck-lab), while cache-policy experiments live in [kv-policy-lab](https://github.com/santho090/kv-policy-lab). Keeping the labs separate prevents measured, simulated, and estimated results from being blurred together.
 
 ## Sources and authorship
 

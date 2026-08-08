@@ -21,7 +21,7 @@ The path forward is evidence-driven specialization. New mechanisms belong in a s
 
 [Towards Efficient Large Language Model Serving: A Survey on System-Aware KV Cache Optimization, arXiv:2607.08057](https://arxiv.org/abs/2607.08057) organizes recent KV work by execution and scheduling, placement and migration, and representation and retention. Use it as a future map for finding interactions to test. It is a survey, not evidence that any one mechanism applies to a local workload.
 
-The [project opportunity map](../reference/project-opportunity-map.md) makes the planned clean-room sequence explicit: diagnosis and KV policy work precede scheduler, placement, controller, and larger runtime projects.
+The [project opportunity map](../reference/project-opportunity-map.md) separates the existing P0 foundation from gated future work: diagnosis and KV-policy evidence must precede scheduler, placement, controller, and larger runtime projects.
 
 ## Workload variables
 
@@ -49,7 +49,7 @@ Suppose a measured workload shows 70 percent of TTFT in queueing and 5 percent i
 
 ## Executable exercise
 
-Choose one planned direction: bottleneck diagnosis or KV policy experimentation. Write an experiment record with a falsifiable hypothesis, a stop condition, and a result type. Validate it with `ie validate experiment` before creating a separate implementation.
+Choose one bounded question for [Inference Bottleneck Lab](https://github.com/santho090/inference-bottleneck-lab) or [KV Policy Lab](https://github.com/santho090/kv-policy-lab). Write an experiment record with a falsifiable hypothesis, a stop condition, and a result type. Validate it with `ie validate experiment` before proposing a P1 or P2 implementation.
 
 ## Primary references
 
